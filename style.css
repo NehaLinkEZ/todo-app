@@ -9,7 +9,7 @@ body {
 
 /* Main Container */
 .container {
-  max-width: 500px;
+  max-width: 700px;
   margin: 0 auto;
   background: #ffffff;
   padding: 20px;
@@ -27,6 +27,7 @@ h1 {
 .form {
   display: grid;
   grid-gap: 10px;
+  margin-bottom: 20px;
 }
 
 input[type="text"],
@@ -52,33 +53,47 @@ button:hover {
   background-color: #0056b3;
 }
 
-/* To-Do List Styling */
-#todo-list {
-  list-style: none;
-  padding: 0;
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
   margin-top: 20px;
 }
 
-#todo-list li {
-  background: #f0f0f0;
-  margin: 10px 0;
+thead {
+  background-color: #007bff;
+  color: white;
+}
+
+thead th {
+  font-weight: bold;
   padding: 10px;
-  border-radius: 4px;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 10px;
+  text-align: left;
 }
 
-#todo-list li .details {
-  display: flex;
-  flex-direction: column;
+tbody td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
 }
 
-#todo-list li button {
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+button.delete {
   background-color: red;
   color: white;
   border: none;
   padding: 5px 10px;
   border-radius: 4px;
   cursor: pointer;
+}
+
+button.delete:hover {
+  background-color: darkred;
 }
