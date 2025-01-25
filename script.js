@@ -3,29 +3,22 @@ let tasks = [];
 
 // Function to render tasks
 function renderTasks() {
-  const todoList = document.getElementById("todo-list");
-  todoList.innerHTML = ""; // Clear the list
+  const tableBody = document.querySelector("#todo-table tbody");
+  tableBody.innerHTML = ""; // Clear the table
 
   tasks.forEach((task, index) => {
-    const listItem = document.createElement("li");
+    const row = document.createElement("tr");
 
-    // Task details
-    const details = document.createElement("div");
-    details.className = "details";
-    details.innerHTML = `
-      <strong>${task.name}</strong>
-      <p>Date: ${task.date}</p>
-      <p>Est. Time: ${task.estimatedTime} hrs | Actual Time: ${task.actualTime} hrs</p>
+    // Create table cells
+    row.innerHTML = `
+      <td>${task.name}</td>
+      <td>${task.date}</td>
+      <td>${task.estimatedTime}</td>
+      <td>${task.actualTime}</td>
+      <td><button class="delete" onclick="deleteTask(${index})">Delete</button></td>
     `;
 
-    // Delete button
-    const deleteButton = document.createElement("button");
-    deleteButton.textContent = "Delete";
-    deleteButton.onclick = () => deleteTask(index);
-
-    listItem.appendChild(details);
-    listItem.appendChild(deleteButton);
-    todoList.appendChild(listItem);
+    tableBody.appendChild(row);
   });
 }
 
@@ -46,7 +39,7 @@ function addTask() {
     });
 
     saveTasks(); // Save to local storage
-    renderTasks(); // Re-render the list
+    renderTasks(); // Re-render the table
     clearInputs(); // Clear input fields
   } else {
     alert("Please fill in all fields!");
@@ -57,7 +50,7 @@ function addTask() {
 function deleteTask(index) {
   tasks.splice(index, 1); // Remove task from array
   saveTasks(); // Save updated tasks
-  renderTasks(); // Re-render the list
+  renderTasks(); // Re-render the table
 }
 
 // Function to save tasks to local storage as JSON
