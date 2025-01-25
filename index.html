@@ -16,7 +16,22 @@
       <input type="number" id="todo-actual" placeholder="Actual Time (hrs)" />
       <button id="add-button">Add Task</button>
     </div>
-    <ul id="todo-list"></ul>
+
+    <!-- Table to display tasks -->
+    <table id="todo-table">
+      <thead>
+        <tr>
+          <th>Task Name</th>
+          <th>Due Date</th>
+          <th>Est. Time (hrs)</th>
+          <th>Actual Time (hrs)</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Tasks will be dynamically added here -->
+      </tbody>
+    </table>
   </div>
   <script src="script.js"></script>
 </body>
