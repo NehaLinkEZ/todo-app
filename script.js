@@ -8,13 +8,22 @@ function renderTasks() {
 
   tasks.forEach((task, index) => {
     const listItem = document.createElement("li");
-    listItem.textContent = task.name;
 
-    // Add delete button
+    // Task details
+    const details = document.createElement("div");
+    details.className = "details";
+    details.innerHTML = `
+      <strong>${task.name}</strong>
+      <p>Date: ${task.date}</p>
+      <p>Est. Time: ${task.estimatedTime} hrs | Actual Time: ${task.actualTime} hrs</p>
+    `;
+
+    // Delete button
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Delete";
     deleteButton.onclick = () => deleteTask(index);
 
+    listItem.appendChild(details);
     listItem.appendChild(deleteButton);
     todoList.appendChild(listItem);
   });
@@ -22,15 +31,25 @@ function renderTasks() {
 
 // Function to add a task
 function addTask() {
-  const input = document.getElementById("todo-input");
-  const taskName = input.value.trim();
+  const name = document.getElementById("todo-input").value.trim();
+  const date = document.getElementById("todo-date").value;
+  const estimatedTime = document.getElementById("todo-estimation").value;
+  const actualTime = document.getElementById("todo-actual").value;
 
-  if (taskName) {
+  if (name && date && estimatedTime && actualTime) {
     // Add task to the array
-    tasks.push({ name: taskName });
+    tasks.push({
+      name,
+      date,
+      estimatedTime: parseFloat(estimatedTime),
+      actualTime: parseFloat(actualTime),
+    });
+
     saveTasks(); // Save to local storage
     renderTasks(); // Re-render the list
-    input.value = ""; // Clear input
+    clearInputs(); // Clear input fields
+  } else {
+    alert("Please fill in all fields!");
   }
 }
 
@@ -53,6 +72,14 @@ function loadTasks() {
     tasks = JSON.parse(storedTasks);
     renderTasks();
   }
+}
+
+// Function to clear input fields
+function clearInputs() {
+  document.getElementById("todo-input").value = "";
+  document.getElementById("todo-date").value = "";
+  document.getElementById("todo-estimation").value = "";
+  document.getElementById("todo-actual").value = "";
 }
 
 // Add event listener to the Add button
