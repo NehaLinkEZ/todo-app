@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>To-Do List App</title>
+  <title>To-Do List with Time Tracking</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h1>To-Do List</h1>
-    <div>
-      <input type="text" id="todo-input" placeholder="Add a new task..." />
+    <h1>To-Do List with Time Tracking</h1>
+    <div class="form">
+      <input type="text" id="todo-input" placeholder="Task Name" />
+      <input type="date" id="todo-date" />
+      <input type="number" id="todo-estimation" placeholder="Est. Time (hrs)" />
+      <input type="number" id="todo-actual" placeholder="Actual Time (hrs)" />
       <button id="add-button">Add Task</button>
     </div>
     <ul id="todo-list"></ul>
