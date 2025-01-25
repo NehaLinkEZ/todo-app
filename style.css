@@ -9,7 +9,7 @@ body {
 
 /* Main Container */
 .container {
-  max-width: 400px;
+  max-width: 500px;
   margin: 0 auto;
   background: #ffffff;
   padding: 20px;
@@ -23,15 +23,23 @@ h1 {
   margin-bottom: 20px;
 }
 
-/* Input and Button Styling */
-#todo-input {
-  width: 70%;
+/* Form Styling */
+.form {
+  display: grid;
+  grid-gap: 10px;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"] {
+  width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  box-sizing: border-box;
 }
 
-#add-button {
+button {
   padding: 10px 15px;
   background-color: #007bff;
   color: white;
@@ -40,7 +48,7 @@ h1 {
   cursor: pointer;
 }
 
-#add-button:hover {
+button:hover {
   background-color: #0056b3;
 }
 
@@ -56,9 +64,14 @@ h1 {
   margin: 10px 0;
   padding: 10px;
   border-radius: 4px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+}
+
+#todo-list li .details {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
 }
 
 #todo-list li button {
