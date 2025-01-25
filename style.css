@@ -68,13 +68,14 @@ thead {
 thead th {
   font-weight: bold;
   padding: 10px;
-  text-align: left;
+  text-align: center;
+  border: 1px solid #ddd;
 }
 
 tbody td {
   padding: 10px;
+  text-align: center;
   border: 1px solid #ddd;
-  text-align: left;
 }
 
 tbody tr:nth-child(even) {
@@ -96,4 +97,17 @@ button.delete {
 
 button.delete:hover {
   background-color: darkred;
+}
+
+button.edit {
+  background-color: #ffc107;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button.edit:hover {
+  background-color: #e0a800;
 }
